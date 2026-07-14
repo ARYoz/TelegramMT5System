@@ -1,0 +1,14 @@
+{
+  "groups": [
+    { "chat_id": -1001784375097, "provider": "group_1", "strategy": null, "strategy_version": null, "enabled": true },
+    { "chat_id": -1003367695960, "provider": "group_2", "strategy": null, "strategy_version": null, "enabled": true },
+    { "chat_id": -1001754381715, "provider": "group_3", "strategy": null, "strategy_version": null, "enabled": true },
+    { "chat_id": -1001887586195, "provider": "group_4", "strategy": null, "strategy_version": null, "enabled": true },
+    { "chat_id": -1003113077646, "provider": "group_5", "strategy": null, "strategy_version": null, "enabled": true },
+    { "chat_id": -1002465006057, "provider": "group_6", "strategy": null, "strategy_version": null, "enabled": true },
+    { "chat_id": -1001569906975, "provider": "group_7", "strategy": null, "strategy_version": null, "enabled": true },
+    { "chat_id": -1002001216034, "provider": "group_8", "strategy": null, "strategy_version": null, "enabled": true },
+    { "chat_id": -1001320976295, "provider": "group_9", "strategy": null, "strategy_version": null, "enabled": true }
+  ],
+  "_note": "Fast Path reads this file. Set strategy + strategy_version per group when parsers are ready."
+}
