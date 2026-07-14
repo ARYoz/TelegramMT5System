@@ -4,30 +4,61 @@
 
 > **MT5 הוא מקור האמת.**
 
-ראה [SYSTEM_PHILOSOPHY.md](SYSTEM_PHILOSOPHY.md) — מסמך הפילוסופיה לכל צ'אט/מפתח חדש.
+- [SYSTEM_PHILOSOPHY.md](SYSTEM_PHILOSOPHY.md) — פילוסופיה לכל צ'אט חדש
+- [docs/FAST_PATH.md](docs/FAST_PATH.md) — הפעלת Fast Path
 
-## מבנה (מתוכנן)
+## מבנה
 
 ```
-fast-path/      ← Listener, Parser, Builder, Order Engine
-smart-path/     ← Workers, Supervisor, Analytics, Reports
-recovery/       ← שחזור מ-MT5
-config/         ← קבוצות Telegram + אסטרטגיות
+fast_path/          ← ⚡ Listener → Parser → Builder → Order Engine → MT5
+smart_path/         ← 🧠 אחרי שליחה (בפיתוח)
+recovery/           ← 🔄 שחזור מ-MT5 (בפיתוח)
+config/groups.json  ← 9 קבוצות Telegram + strategy mapping
+main.py             ← נקודת כניסה
 ```
 
-## קבוצות Telegram
+## התקנה מהירה (Python)
 
-9 קבוצות — רשימה מלאה ב-[config/groups.json](config/groups.json).
+```bash
+git clone https://github.com/ARYoz/TelegramMT5System.git
+cd TelegramMT5System
+python -m venv .venv
+.venv\Scripts\activate          # Windows
+pip install -r requirements.txt
+copy .env.example .env          # מלא API ID / Hash
+```
+
+**דרישות:** MT5 פתוח על אותו VPS + AutoTrading מופעל.
+
+```bash
+python main.py
+```
+
+## הגדרת קבוצה
+
+ב-`config/groups.json` לכל קבוצה:
+
+```json
+{
+  "chat_id": -1001784375097,
+  "provider": "gold_signals",
+  "strategy": "example",
+  "strategy_version": "1.0",
+  "enabled": true
+}
+```
+
+`strategy` חייב להתאים ל-parser רשום (כרגע: `example`).
 
 ## סטטוס
 
 | רכיב | סטטוס |
 |------|--------|
-| פילוסופיה + ארכיטקטורה | ✅ מתועד |
-| Fast Path | 🔲 לא מומש |
-| Smart Path | 🔲 לא מומש |
-| Recovery | 🔲 לא מומש |
+| פילוסופיה + ארכיטקטורה | ✅ |
+| Fast Path (Python) | ✅ scaffold |
+| Smart Path | 🔲 hook בלבד |
+| Recovery | 🔲 |
 
 ## Repo נפרד
 
-פרויקט זה **נפרד** מ-[VolatilityGridBot](https://github.com/ARYoz/VolatilityGridBot) (EA לגריד תנודתיות בזהב).
+נפרד מ-[VolatilityGridBot](https://github.com/ARYoz/VolatilityGridBot).
